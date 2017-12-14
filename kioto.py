@@ -58,7 +58,6 @@ parser.add_argument("--alphafeatures", help="enable alpha feature - (false)", de
 args = parser.parse_args()
 
 template = TEMPLATE_ENVIRONMENT.get_template('k8s.tf.tmpl')
-config_template = TEMPLATE_ENVIRONMENT.get_template('config.env.tmpl')
 calico_template = TEMPLATE_ENVIRONMENT.get_template('calico.yaml.tmpl')
 cloudconf_template = TEMPLATE_ENVIRONMENT.get_template('k8scloudconf.yaml.tmpl')
 kubeconfig_template = TEMPLATE_ENVIRONMENT.get_template('kubeconfig.sh.tmpl')
