@@ -177,6 +177,15 @@ coreos:
         ExecStart=/usr/bin/timedatectl set-timezone Europe/Amsterdam
         RemainAfterExit=yes
         Type=oneshot
+    - name: vm.max_map_count.service
+      command: start
+      content: |
+        [Unit]
+        Description=Set vm.max_map_count
+        [Service]
+        ExecStart=/bin/sh -c "sysctl -w vm.max_map_count=384000"
+        RemainAfterExit=yes
+        Type=oneshot        
     - name: systemd-timesyncd.service
       command: stop
       mask: true
