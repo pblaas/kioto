@@ -85,3 +85,9 @@ optional arguments:
 * Calico network overlay support.
 * Private network support.
 * All managers nodes are part of etcd2 cluster.
+
+##### Caveats
+
+If you are using this script without my managment container (pblaas/openstack-cli) make sure you set the following environment variables:
+* export OS_TENANT_ID=$OS_PROJECT_ID
+* export OS_TENANT_NAME=$OS_PROJECT_NAME
