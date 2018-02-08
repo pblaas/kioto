@@ -2,7 +2,7 @@
 """Kubernetes cluster generator."""
 __author__ = "Patrick Blaas <patrick@kite4fun.nl>"
 __license__ = "GPL v3"
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 __status__ = "Active"
 
 
@@ -50,7 +50,7 @@ parser.add_argument("--managerimageflavor", help="Manager image flavor ID - (200
 parser.add_argument("--workerimageflavor", help="Worker image flavor ID - (2008)", type=int, default=2008)
 parser.add_argument("--dnsserver", help="DNS server - (8.8.8.8)", default="8.8.8.8")
 parser.add_argument("--cloudprovider", help="Cloud provider support - (openstack)", default="openstack")
-parser.add_argument("--k8sver", help="Hyperkube version - (v1.7.9_coreos.0)", default="v1.7.9_coreos.0")
+parser.add_argument("--k8sver", help="Hyperkube version - (v1.8.7_coreos.0)", default="v1.8.7_coreos.0")
 parser.add_argument("--flannelver", help="Flannel image version - (v0.8.0)", default="v0.8.0")
 parser.add_argument("--netoverlay", help="Network overlay - (flannel)", default="flannel")
 parser.add_argument("--authmode", help="Authorization mode - (AlwaysAllow)", default="AlwaysAllow")
