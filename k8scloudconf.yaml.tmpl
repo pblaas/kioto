@@ -5,7 +5,6 @@ coreos:
   flannel:
     interface: {{ ipaddress }}
   etcd2:
-    discovery: {{ discoveryid }}
     advertise-client-urls: https://{{ ipaddress }}:2379
     initial-advertise-peer-urls: https://{{ ipaddress }}:2380
     listen-client-urls: http://127.0.0.1:2379,https://{{ ipaddress }}:2379
@@ -14,6 +13,10 @@ coreos:
     key-file: /etc/kubernetes/ssl/{{ ipaddress }}-etcd-node-key.pem
     trusted-ca-file: /etc/kubernetes/ssl/etcd-ca.pem
     client-cert-auth: true
+    name: infra{{ etcdid }}
+    initial-cluster: {{ initialclusterlist }}
+    initial-cluster-token: etcd-cluster-1
+    initial-cluster-state: new
     peer-cert-file: /etc/kubernetes/ssl/{{ ipaddress }}-etcd-node.pem
     peer-key-file: /etc/kubernetes/ssl/{{ ipaddress }}-etcd-node-key.pem
     peer-trusted-ca-file: /etc/kubernetes/ssl/etcd-ca.pem
@@ -185,7 +188,7 @@ coreos:
         [Service]
         ExecStart=/bin/sh -c "sysctl -w vm.max_map_count=384000"
         RemainAfterExit=yes
-        Type=oneshot        
+        Type=oneshot
     - name: systemd-timesyncd.service
       command: stop
       mask: true
