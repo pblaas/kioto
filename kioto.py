@@ -2,7 +2,7 @@
 """Kubernetes cluster generator."""
 __author__ = "Patrick Blaas <patrick@kite4fun.nl>"
 __license__ = "GPL v3"
-__version__ = "0.2.1"
+__version__ = "0.2.2"
 __status__ = "Active"
 
 
@@ -225,6 +225,12 @@ try:
         apiserver = str("https://" + args.subnetcidr.rsplit('.', 1)[0] + "." + str(node) + ":2379,")
         iplist = iplist + apiserver
 
+    initialclusterlist = ""
+    for node in range(10, args.managers+10):
+        apiserver = str("infra" + str(node-10) + "=https://" + args.subnetcidr.rsplit('.', 1)[0] + "." + str(node) + ":2380,")
+        initialclusterlist = initialclusterlist + apiserver
+
+
     discovery_id = createClusterId()
     createCaCert()
     #create ServiceAccount certificate
@@ -292,6 +298,8 @@ try:
             workers=args.workers,
             dnsserver=args.dnsserver,
             etcdendpointsurls=iplist.rstrip(','),
+            etcdid=(node-10),
+            initialclusterlist=initialclusterlist.rstrip(','),
             floatingip1=args.floatingip1,
             k8sver=args.k8sver,
             flannelver=args.flannelver,
@@ -339,6 +347,8 @@ try:
             workers=args.workers,
             dnsserver=args.dnsserver,
             etcdendpointsurls=iplist.rstrip(','),
+            etcdid=(node-10),
+            initialclusterlist=initialclusterlist.rstrip(','),
             floatingip1=args.floatingip1,
             k8sver=args.k8sver,
             flannelver=args.flannelver,
