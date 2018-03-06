@@ -115,7 +115,10 @@ coreos:
         --client-ca-file=/etc/kubernetes/ssl/ca.pem \
         --anonymous-auth=false \
         --cloud-provider={{ cloudprovider }} \
-        --cloud-config=/etc/kubernetes/cloud.conf
+        --cloud-config=/etc/kubernetes/cloud.conf \
+        --http-check-frequency=20s \
+        --node-status-update-frequency=30s \
+        --volume-stats-agg-period=2m0s
         ExecStop=-/usr/bin/rkt stop --uuid-file=/var/run/kubelet-pod.uuid
         Restart=always
         RestartSec=10
@@ -435,6 +438,8 @@ write_files:
           - --cloud-provider={{ cloudprovider }}
           - --cloud-config=/etc/kubernetes/ssl/cloud.conf
           - --kubeconfig=/etc/kubernetes/master-kubeconfig.yaml
+          - --node-monitor-grace-period=120s
+          - --node-monitor-period=10s
           resources:
             requests:
               cpu: 200m
