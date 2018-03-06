@@ -19,7 +19,7 @@ resource "openstack_networking_subnet_v2" "subnet_{{ clustername }}" {
 
 resource "openstack_networking_router_v2" "k8s_{{ clustername }}_router" {
   name             = "k8s_{{ clustername }}_router"
-  external_gateway = "f9c73cd5-9e7b-4bfd-89eb-c2f4f584c326"
+  external_network_id = "f9c73cd5-9e7b-4bfd-89eb-c2f4f584c326"
 }
 
 resource "openstack_networking_router_interface_v2" "k8s_{{ clustername }}_router_interface" {
