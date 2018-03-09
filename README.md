@@ -91,3 +91,6 @@ optional arguments:
 If you are using this script without my managment container (pblaas/openstack-cli) make sure you set the following environment variables:
 * export OS_TENANT_ID=$OS_PROJECT_ID
 * export OS_TENANT_NAME=$OS_PROJECT_NAME
+
+Please note that these scripts use some static configuration defaults, like the floating network gateway id which are specific for the OpenStack API server on https://cloudvps.com.
+You're environment may use other defaults. Please let me know if you need to change anything to make this work on your end, not being on cloudvps.com so I can update the scripts and define this in provided params.
