@@ -21,16 +21,18 @@ This project consists of the python script kioto.py and several template files. 
 ##### Usage
 ```
 usage: kioto.py [-h] [--corepassword COREPASSWORD] [--username USERNAME]
-                    [--projectname PROJECTNAME] [--clustername CLUSTERNAME]
-                    [--subnetcidr SUBNETCIDR] [--calicocidr CALICOCIDR]
-                    [--managers MANAGERS] [--workers WORKERS]
-                    [--managerimageflavor MANAGERIMAGEFLAVOR]
-                    [--workerimageflavor WORKERIMAGEFLAVOR]
-                    [--dnsserver DNSSERVER] [--cloudprovider CLOUDPROVIDER]
-                    [--k8sver K8SVER] [--flannelver FLANNELVER]
-                    [--netoverlay NETOVERLAY] [--authmode AUTHMODE]
-                    [--alphafeatures ALPHAFEATURES]
-                    keypair floatingip1 floatingip2
+                [--projectname PROJECTNAME] [--clustername CLUSTERNAME]
+                [--subnetcidr SUBNETCIDR] [--calicocidr CALICOCIDR]
+                [--managers MANAGERS] [--workers WORKERS]
+                [--managerimageflavor MANAGERIMAGEFLAVOR]
+                [--workerimageflavor WORKERIMAGEFLAVOR]
+                [--dnsserver DNSSERVER] [--cloudprovider CLOUDPROVIDER]
+                [--k8sver K8SVER] [--flannelver FLANNELVER]
+                [--netoverlay NETOVERLAY] [--authmode AUTHMODE]
+                [--alphafeatures ALPHAFEATURES]
+                [--availabilityzone AVAILABILITYZONE]
+                [--externalnetid EXTERNALNETID]
+                keypair floatingip1 floatingip2
 
 positional arguments:
   keypair               Keypair ID
@@ -62,7 +64,7 @@ optional arguments:
                         DNS server - (8.8.8.8)
   --cloudprovider CLOUDPROVIDER
                         Cloud provider support - (openstack)
-  --k8sver K8SVER       Hyperkube version - (v1.7.9_coreos.0)
+  --k8sver K8SVER       Hyperkube version - (v1.8.7_coreos.0)
   --flannelver FLANNELVER
                         Flannel image version - (v0.8.0)
   --netoverlay NETOVERLAY
@@ -70,6 +72,11 @@ optional arguments:
   --authmode AUTHMODE   Authorization mode - (AlwaysAllow)
   --alphafeatures ALPHAFEATURES
                         enable alpha feature - (false)
+  --availabilityzone AVAILABILITYZONE
+                        Availability zone - (AMS-EQ1)
+  --externalnetid EXTERNALNETID
+                        External network id - (f9c73cd5-9e7b-4bfd-89eb-
+                        c2f4f584c326)
 ```
 
 ##### Features
@@ -92,5 +99,4 @@ If you are using this script without my managment container (pblaas/openstack-cl
 * export OS_TENANT_ID=$OS_PROJECT_ID
 * export OS_TENANT_NAME=$OS_PROJECT_NAME
 
-Please note that these scripts use some static configuration defaults, like the floating network gateway id which are specific for the OpenStack API server on https://cloudvps.com.
 You're environment may use other defaults. Please let me know if you need to change anything to make this work on your end, not being on cloudvps.com so I can update the scripts and define this in provided params.
