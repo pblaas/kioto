@@ -164,7 +164,7 @@ try:
                 workerimageflavor=workerimageflavor,
                 keypair=keypair,
                 subnetcidr=subnetcidr,
-                octet=lanip.rsplit('.', 1)[1]
+                octet=lanip.rsplit('.', 1)[1],
                 availabilityzone=availabilityzone
                 ))
 
