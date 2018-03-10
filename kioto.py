@@ -2,7 +2,7 @@
 """Kubernetes cluster generator."""
 __author__ = "Patrick Blaas <patrick@kite4fun.nl>"
 __license__ = "GPL v3"
-__version__ = "0.2.3"
+__version__ = "0.2.4"
 __status__ = "Active"
 
 
@@ -48,6 +48,7 @@ parser.add_argument("--managers", help="Number of k8s managers - (3)", type=int,
 parser.add_argument("--workers", help="Number of k8s workers - (0)", type=int, default=0)
 parser.add_argument("--managerimageflavor", help="Manager image flavor ID - (2004)", type=int, default=2004)
 parser.add_argument("--workerimageflavor", help="Worker image flavor ID - (2008)", type=int, default=2008)
+parser.add_argument("--glanceimagename", help="Glance image name ID - (Container Linux CoreOS (third-party))", default="Container Linux CoreOS (third-party)")
 parser.add_argument("--dnsserver", help="DNS server - (8.8.8.8)", default="8.8.8.8")
 parser.add_argument("--cloudprovider", help="Cloud provider support - (openstack)", default="openstack")
 parser.add_argument("--k8sver", help="Hyperkube version - (v1.8.7_coreos.0)", default="v1.8.7_coreos.0")
@@ -177,7 +178,6 @@ try:
     def printClusterInfo():
         """Print cluster info."""
         print("-"*40+"\n\nCluster Info:")
-        print("Etcd ID token:\t" + str(etcdTokenId.rsplit('/', 1)[1]))
         print("k8s version:\t" + str(args.k8sver))
         print("Clustername:\t" + str(args.clustername))
         print("Cluster cidr:\t" + str(args.subnetcidr))
@@ -191,6 +191,7 @@ try:
         print("Net overlay:\t" + str(args.netoverlay))
         print("Auth mode:\t" + str(args.authmode))
         print("alphafeatures:\t" + str(args.alphafeatures))
+        print("glanceimagename:\t" + str(args.glanceimagename))
         print("-"*40+"\n")
         print("To start building the cluster: \tterraform init && terraform plan && terraform apply && sh snat_acl.sh")
         print("To interact with the cluster: \tsh kubeconfig.sh")
@@ -216,6 +217,7 @@ try:
             keypair=args.keypair,
             availabilityzone=args.availabilityzone,
             externalnetid=args.externalnetid,
+            glanceimagename=args.glanceimagename
             ))
 
         with open('cluster.status', 'w') as k8sstat:
@@ -277,6 +279,7 @@ try:
         floatingip2=args.floatingip2,
         availabilityzone=args.availabilityzone,
         externalnetid=args.externalnetid,
+        glanceimagename=args.glanceimagename
         ))
 
 
