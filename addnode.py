@@ -2,7 +2,7 @@
 """Kubernetes cluster generator - addnode."""
 __author__ = "Patrick Blaas <patrick@kite4fun.nl>"
 __license__ = "GPL v3"
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 __status__ = "Active"
 
 
@@ -115,6 +115,7 @@ try:
             calicocidr = str(fh[15].split("\t")[1])[:-1]
             flannelver = str(fh[16].split("\t")[1])[:-1]
             keypair = str(fh[17].split("\t")[1])[:-1]
+            availabilityzone = str(fh[18].split("\t")[2])[:-1]
 
 
             createNodeCert(lanip, "worker")
@@ -164,6 +165,7 @@ try:
                 keypair=keypair,
                 subnetcidr=subnetcidr,
                 octet=lanip.rsplit('.', 1)[1]
+                availabilityzone=availabilityzone
                 ))
 
             with open("k8s.tf", 'a') as k8stf:
