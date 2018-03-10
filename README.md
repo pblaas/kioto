@@ -26,10 +26,10 @@ usage: kioto.py [-h] [--corepassword COREPASSWORD] [--username USERNAME]
                 [--managers MANAGERS] [--workers WORKERS]
                 [--managerimageflavor MANAGERIMAGEFLAVOR]
                 [--workerimageflavor WORKERIMAGEFLAVOR]
-                [--dnsserver DNSSERVER] [--cloudprovider CLOUDPROVIDER]
-                [--k8sver K8SVER] [--flannelver FLANNELVER]
-                [--netoverlay NETOVERLAY] [--authmode AUTHMODE]
-                [--alphafeatures ALPHAFEATURES]
+                [--glanceimagename GLANCEIMAGENAME] [--dnsserver DNSSERVER]
+                [--cloudprovider CLOUDPROVIDER] [--k8sver K8SVER]
+                [--flannelver FLANNELVER] [--netoverlay NETOVERLAY]
+                [--authmode AUTHMODE] [--alphafeatures ALPHAFEATURES]
                 [--availabilityzone AVAILABILITYZONE]
                 [--externalnetid EXTERNALNETID]
                 keypair floatingip1 floatingip2
@@ -60,6 +60,9 @@ optional arguments:
                         Manager image flavor ID - (2004)
   --workerimageflavor WORKERIMAGEFLAVOR
                         Worker image flavor ID - (2008)
+  --glanceimagename GLANCEIMAGENAME
+                        Glance image name ID - (Container Linux CoreOS (third-
+                        party))
   --dnsserver DNSSERVER
                         DNS server - (8.8.8.8)
   --cloudprovider CLOUDPROVIDER
