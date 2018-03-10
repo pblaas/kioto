@@ -191,7 +191,7 @@ try:
         print("Net overlay:\t" + str(args.netoverlay))
         print("Auth mode:\t" + str(args.authmode))
         print("alphafeatures:\t" + str(args.alphafeatures))
-        print("glanceimagename:\t" + str(args.glanceimagename))
+        print("glanceimage:\t" + str(args.glanceimagename))
         print("-"*40+"\n")
         print("To start building the cluster: \tterraform init && terraform plan && terraform apply && sh snat_acl.sh")
         print("To interact with the cluster: \tsh kubeconfig.sh")
