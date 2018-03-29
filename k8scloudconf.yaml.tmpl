@@ -277,7 +277,8 @@ write_files:
         "name": "podnet",
         "type": "flannel",
         "delegate": {
-          "isDefaultGateway": true
+          "isDefaultGateway": true,
+          "hairpinMode": true
         }
       }
   - path: "/etc/flannel/options.env"
