@@ -93,7 +93,6 @@ coreos:
 {% endif %}
         ExecStart=/usr/lib/coreos/kubelet-wrapper \
         --kubeconfig=/etc/kubernetes/master-kubeconfig.yaml \
-        --require-kubeconfig \
 {% if isworker != 1 %}
         --register-schedulable=false \
 {% else %}
