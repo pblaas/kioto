@@ -1,3 +1,5 @@
+:exclamation: This project is inactive due to a new project which supersedes this project's functionality. You can find it at https://github.com/pblaas/nagoya.
+
 ## Project KiOTO
 
 #### What is project KiOTO ?
